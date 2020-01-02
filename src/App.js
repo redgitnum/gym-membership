@@ -83,17 +83,13 @@ class App extends React.Component {
           }} 
         onHid={() => this.setState({showModalAdd: false})}
         />
-        <div className="row head m-1">
-          <div className="menuleft">
-              <button className="col btn btn-success" onClick={() => this.setState({showModalAdd: true})}>ADD NEW MEMBER</button>
+        <div className="row m-1">
+          <div className="w-100 btn bg-warning font-weight-bold" >
+            GYM MEMBERSHIP MANAGMENT PLATFORM
           </div>
-          <div className="col">
-              <div className="w-100 btn bg-warning font-weight-bold" >
-                GYM MEMBERSHIP MANAGMENT PLATFORM
-              </div>
-          </div>
+          <button className="w-100 col btn btn-success" onClick={() => this.setState({showModalAdd: true})}>ADD NEW MEMBER</button>
         </div>
-        <div className="row main-content">
+        <div className="row">
           <div className="col overflow-auto h-100">
               <table className="table table-sm table-bordered table-hover">
                 <thead className="thead-dark">
@@ -108,7 +104,10 @@ class App extends React.Component {
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <List updateMembers={() => this.updateMembers()} members={this.state.membersList}/>
+                {
+                this.state.membersList.length ? <List updateMembers={() => this.updateMembers()} members={this.state.membersList}/> : <div>Loading</div>
+                }
+                
               </table>
           </div>
         </div>
